@@ -2,9 +2,15 @@ import React from 'react';
 import deliverySummary from '../mockdata/deliverySummaryData';
 
 const DeliveriesSummery = () => (
-  <div style={{ maxWidth: 300, width: 300 }}>
-    {/* Centered heading above the card */}
-    <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 12, textAlign: 'center' }}>
+  <div
+    style={{
+      maxWidth: 320,
+      width: '100%',
+      flex: '0 0 320px',
+      boxSizing: 'border-box'
+    }}
+  >
+    <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 0, textAlign: 'center' }}>
       Order Details
     </div>
     <div

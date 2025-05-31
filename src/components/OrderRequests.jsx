@@ -28,7 +28,6 @@ const OrderCard = ({ order }) => (
     <div style={{ marginBottom: 4 }}>
       <b>Delivery Address:</b> {order.deliveryAddress}
     </div>
-    {/* Dashed line separator */}
     <div
       style={{
         borderTop: '1px dashed #bbb',
@@ -58,7 +57,6 @@ const OrderCard = ({ order }) => (
           </ul>
         </li>
       </ul>
-      {/* Select driver and assign button */}
       <div style={{ display: 'flex', alignItems: 'center', marginTop: 10, gap: 8 }}>
         <select
           style={{
@@ -100,17 +98,16 @@ const OrderCard = ({ order }) => (
 const OrderRequests = () => (
   <div
     style={{
+      maxWidth: 320,
       width: '100%',
-      maxWidth: 300,
+      flex: '0 0 320px',
       minHeight: 575,
       background: '#fff',
       borderRadius: 5,
-   
-     
       padding: 16,
-      flex: '0 0 320px',
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      boxSizing: 'border-box'
     }}
   >
     <div style={{ display: 'flex', alignItems: 'center', marginBottom: 16 }}>

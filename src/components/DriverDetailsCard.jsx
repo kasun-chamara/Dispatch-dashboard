@@ -1,25 +1,23 @@
 import React, { useState } from 'react';
-import driverDetails from '../mockdata/driverDetails'; // Adjust the path as necessary
+import driverDetails from '../mockdata/driverDetails';
 
 const DriverDetailsCard = ({ driver }) => {
   const [shiftInput, setShiftInput] = useState('');
   const [endInput, setEndInput] = useState('');
-
-  // Use the active property from mock data
   const isActive = driver.active;
 
   return (
     <div
       style={{
         border: '1px solid #eee',
-      borderRadius: 7,
-      padding: 16,
-      marginBottom: 14,
-      background: '#F8F4EB',
-      fontSize: 13,
-      maxWidth: 350,
-      width: '100%',
-      boxSizing: 'border-box'
+        borderRadius: 7,
+        padding: 16,
+        marginBottom: 14,
+        background: '#F8F4EB',
+        fontSize: 13,
+        maxWidth: 320,
+        width: '100%',
+        boxSizing: 'border-box'
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: 4 }}>
@@ -34,7 +32,7 @@ const DriverDetailsCard = ({ driver }) => {
             width: 14,
             height: 14,
             borderRadius: '50%',
-            background: isActive ? '#28a745' : '#dc3545', // green or red
+            background: isActive ? '#28a745' : '#dc3545',
             marginLeft: 8,
             border: '2px solid #fff',
             boxShadow: '0 0 0 1px #bbb',
@@ -68,7 +66,6 @@ const DriverDetailsCard = ({ driver }) => {
       <div style={{ marginBottom: 4 }}>
         <b>Vehicle No:</b> {driver.vehicleNo}
       </div>
-      {/* Dotted line under vehicle number */}
       <div
         style={{
           borderTop: '1px dashed #bbb',
@@ -81,7 +78,6 @@ const DriverDetailsCard = ({ driver }) => {
       <div style={{ marginBottom: 4 }}>
         <b>Shift End at:</b> {driver.shiftEnd}
       </div>
-      {/* First row: text field and Start button (same size as End) */}
       <div style={{ display: 'flex', alignItems: 'center', marginTop: 8 }}>
         <input
           type="text"
@@ -113,7 +109,6 @@ const DriverDetailsCard = ({ driver }) => {
           Start
         </button>
       </div>
-      {/* Second row: text field and End button (same size as Start) */}
       <div style={{ display: 'flex', alignItems: 'center', marginTop: 8 }}>
         <input
           type="text"
@@ -160,7 +155,7 @@ const DriverDetailsRequests = () => {
     <div
       style={{
         width: '100%',
-        maxWidth: 300,
+        maxWidth: 320,
         minHeight: 575,
         background: '#fff',
         borderRadius: 5,
@@ -168,13 +163,13 @@ const DriverDetailsRequests = () => {
         flex: '0 0 320px',
         display: 'flex',
         flexDirection: 'column',
-        marginRight: 24,
-        marginTop: 0 // Reduce top margin
+        marginRight: 0,
+        marginTop: 0
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: 10, marginTop: 0 }}>
         <h6 className="mb-0" style={{ flex: 1 }}>Driver Details</h6>
-        <div style={{ position: 'relative', width: 100 }}> {/* Reduced width */}
+        <div style={{ position: 'relative', width: 100 }}>
           <span
             style={{
               position: 'absolute',
