@@ -12,15 +12,14 @@ const DriverDetailsCard = ({ driver }) => {
     <div
       style={{
         border: '1px solid #eee',
-        borderRadius: 7,
-        padding: 20, // Increased padding for better spacing
-        marginBottom: 14,
-        background: '#F8F4EB',
-        fontSize: 13,
-        maxWidth: 300,
-        width: '100%',
-        boxSizing: 'border-box',
-        marginTop: 16, // Remove top margin
+      borderRadius: 7,
+      padding: 16,
+      marginBottom: 14,
+      background: '#F8F4EB',
+      fontSize: 13,
+      maxWidth: 350,
+      width: '100%',
+      boxSizing: 'border-box'
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: 4 }}>
