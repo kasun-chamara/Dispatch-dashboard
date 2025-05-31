@@ -7,10 +7,16 @@ const DeliveriesSummery = () => (
       maxWidth: 320,
       width: '100%',
       flex: '0 0 320px',
+      minHeight: 575,
+      background: '#fff',
+      borderRadius: 5,
+      padding: 16,
+      display: 'flex',
+      flexDirection: 'column',
       boxSizing: 'border-box'
     }}
   >
-    <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 0, textAlign: 'center' }}>
+    <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 10, textAlign: 'center' }}>
       Order Details
     </div>
     <div
@@ -22,7 +28,8 @@ const DeliveriesSummery = () => (
         background: '#F8F4EB',
         fontSize: 13,
         width: '100%',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
+        marginTop: 6,
       }}
     >
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4, fontWeight: 600 }}>

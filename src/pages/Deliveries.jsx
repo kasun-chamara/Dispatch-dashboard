@@ -4,12 +4,11 @@ import DeliveriesSummery from '../components/DeliveriesSummery';
 
 const Deliveries = () => (
   <div>
-    {/* Page heading only */}
-    <h2 style={{ marginBottom: 24 }}>Deliveries</h2>
-    <div style={{ display: 'flex', gap: 24, alignItems: 'flex-start' }}>
+    <div style={{ display: 'flex', gap: 0, alignItems: 'flex-start' }}>
       <div style={{ flex: 1 }}>
-        {/* Search bar at the top right of the table */}
-        <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 12 }}>
+        {/* Heading and search bar in the same row, INSIDE the table container */}
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: 12 }}>
+          <h4 style={{ margin: 0, flex: 1 }}>Deliveries</h4>
           <div style={{ position: 'relative', width: 250 }}>
             <span
               style={{
@@ -41,7 +40,9 @@ const Deliveries = () => (
         </div>
         <DeliveriesTable />
       </div>
-      <DeliveriesSummery />
+      <div style={{ marginLeft: 24 }}>
+        <DeliveriesSummery />
+      </div>
     </div>
   </div>
 );
