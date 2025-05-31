@@ -1,6 +1,14 @@
 import React from 'react';
 import deliverySummary from '../mockdata/deliverySummaryData';
 
+const trackingSteps = [
+  { label: 'Assigned', time: 'May 22, 2025 13:37' },
+  { label: 'Picked Up', time: 'May 22, 2025 13:37' },
+  { label: 'En-route', time: 'May 22, 2025 13:37' },
+  { label: 'At the door', time: 'N/A' },
+  { label: 'Delivered', time: 'N/A' }
+];
+
 const DeliveriesSummery = () => (
   <div
     style={{
@@ -106,11 +114,58 @@ const DeliveriesSummery = () => (
       <div style={{ marginBottom: 4 }}>
         <b>Vehicle No:</b> {deliverySummary.driver.vehicleNo}
       </div>
+      <div
+        style={{
+          borderTop: '1px dashed #bbb',
+          margin: '10px 0'
+        }}
+      ></div>
       <div style={{ marginBottom: 4 }}>
         <b>Shift Start at:</b> {deliverySummary.driver.shiftStart}
       </div>
       <div style={{ marginBottom: 4 }}>
         <b>Shift End at:</b> {deliverySummary.driver.shiftEnd}
+      </div>
+      {/* Tracking Path - Vertical */}
+      <div style={{ marginTop: 18 }}>
+        <div style={{ fontWeight: 600, marginBottom: 10, textAlign: 'center' }}>Tracking</div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', position: 'relative' }}>
+          {trackingSteps.map((step, idx, arr) => (
+            <div key={step.label} style={{ display: 'flex', alignItems: 'flex-start', position: 'relative', minHeight: 48 }}>
+              {/* Circle */}
+              <div style={{
+                width: 18,
+                height: 18,
+                borderRadius: '50%',
+                background: idx <= 2 ? '#FFAE00' : '#ccc',
+                border: '2px solid #fff',
+                boxShadow: idx <= 2 ? '0 0 0 2px #FFAE00' : 'none',
+                marginRight: 12,
+                marginTop: 2,
+                zIndex: 1
+              }}></div>
+              {/* Step Content */}
+              <div>
+                <div style={{ fontSize: 13, fontWeight: idx <= 2 ? 600 : 400, color: idx <= 2 ? '#007bff' : '#888' }}>
+                  {step.label}
+                </div>
+                <div style={{ fontSize: 11, color: '#888', marginTop: 2 }}>{step.time}</div>
+              </div>
+              {/* Vertical Line */}
+              {idx < arr.length - 1 && (
+                <div style={{
+                  position: 'absolute',
+                  left: 8,
+                  top: 22,
+                  width: 2,
+                  height: 32,
+                  background: idx < 2 ? '#FFAE00' : '#ccc',
+                  zIndex: 0
+                }}></div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </div>

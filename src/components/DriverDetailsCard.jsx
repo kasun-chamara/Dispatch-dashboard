@@ -169,7 +169,7 @@ const DriverDetailsRequests = () => {
     >
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: 10, marginTop: 0 }}>
         <h6 className="mb-0" style={{ flex: 1 }}>Driver Details</h6>
-        <div style={{ position: 'relative', width: 100 }}>
+        <div style={{ position: 'relative', width: 150 }}>
           <span
             style={{
               position: 'absolute',

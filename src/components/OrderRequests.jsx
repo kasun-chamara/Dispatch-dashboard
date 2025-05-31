@@ -112,7 +112,7 @@ const OrderRequests = () => (
   >
     <div style={{ display: 'flex', alignItems: 'center', marginBottom: 16 }}>
       <h6 className="mb-0" style={{ flex: 1 }}>Order Requests</h6>
-      <div style={{ position: 'relative', width: 130 }}>
+      <div style={{ position: 'relative', width: 150 }}>
         <span
           style={{
             position: 'absolute',
