@@ -7,13 +7,13 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import SportsMotorsportsOutlinedIcon from '@mui/icons-material/SportsMotorsportsOutlined';
-import DirectionsCarOutlinedIcon from '@mui/icons-material/DirectionsCarOutlined';
+import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
 import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
 
 const menuItems = [
   { text: 'Dashboard', icon: <DashboardOutlinedIcon />, path: '/dashboard' },
+  { text: 'Deliveries', icon: <DirectionsBikeIcon />, path: '/deliveries' },
   { text: 'Drivers', icon: <SportsMotorsportsOutlinedIcon />, path: '/drivers' },
-  { text: 'Deliveries', icon: <DirectionsCarOutlinedIcon />, path: '/deliveries' },
   { text: 'Orders', icon: <ReceiptOutlinedIcon />, path: '/orders' },
 ];
 
@@ -72,11 +72,11 @@ const SideNavBar = ({ width = 220, open = true, mini = false, isMobile = false, 
                 },
               }}
             >
-              {/* Text first, then icon on right */}
-              {!mini && <ListItemText primary={item.text} />}
-              <ListItemIcon sx={{ minWidth: 0, ml: !mini ? 2 : 0, justifyContent: 'center' }}>
+              {/* Icon first, then text */}
+              <ListItemIcon sx={{ minWidth: 0, mr: !mini ? 2 : 0, justifyContent: 'center' }}>
                 {item.icon}
               </ListItemIcon>
+              {!mini && <ListItemText primary={item.text} />}
             </ListItem>
           );
         })}
