@@ -1,11 +1,17 @@
 import React from 'react';
 import DeliveriesTable from '../components/DeliveriesTable';
+import DeliveriesSummery from '../components/DeliveriesSummery';
 
 const Deliveries = () => (
   <div>
     <h2>Deliveries</h2>
-    <p>View and manage deliveries.</p>
-    <DeliveriesTable />
+    <div style={{ display: 'flex', gap: 24, alignItems: 'flex-start' }}>
+      
+      <div style={{ flex: 1 }}>
+        <DeliveriesTable />
+      </div>
+      <DeliveriesSummery />
+    </div>
   </div>
 );
 
