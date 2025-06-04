@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import { Header, SideNavBar } from '../components';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
-import { useLocation } from 'react-router-dom'; // <-- Add this import
+import { useLocation } from 'react-router-dom';
 
 const drawerWidth = 220;
 
-const MainLayout = ({ children }) => {
+// Accept onToggleTheme as a prop
+const MainLayout = ({ children, onToggleTheme }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [sidebarOpen, setSidebarOpen] = useState(!isMobile);
   const [mini, setMini] = useState(false);
-  const location = useLocation(); // <-- Get current location
+  const location = useLocation();
 
   const handleSidebarToggle = () => {
     if (isMobile) {
@@ -32,7 +33,8 @@ const MainLayout = ({ children }) => {
         onMenuClick={handleSidebarToggle}
         isMobile={isMobile}
         mini={mini}
-        location={location} // <-- Pass location to Header
+        location={location}
+        onToggleTheme={onToggleTheme}
       />
       <div style={{ display: 'flex', flex: 1 }}>
         <SideNavBar
@@ -47,7 +49,7 @@ const MainLayout = ({ children }) => {
             flex: 1,
             padding: '24px',
             paddingTop: 88, // 64px header + 24px
-            background: '#fff',
+            background: theme.palette.mode === 'dark' ? '#1e2026' : '#fff',
             transition: 'margin-left 0.2s',
             minHeight: 0,
             overflow: 'auto',

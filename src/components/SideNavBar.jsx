@@ -9,6 +9,7 @@ import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import SportsMotorsportsOutlinedIcon from '@mui/icons-material/SportsMotorsportsOutlined';
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
 import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
+import { useTheme } from '@mui/material/styles';
 
 const menuItems = [
   { text: 'Dashboard', icon: <DashboardOutlinedIcon />, path: '/dashboard' },
@@ -20,6 +21,7 @@ const menuItems = [
 const SideNavBar = ({ width = 220, open = true, mini = false, isMobile = false, onClose }) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const theme = useTheme();
 
   const drawerProps = isMobile
     ? {
@@ -41,11 +43,12 @@ const SideNavBar = ({ width = 220, open = true, mini = false, isMobile = false, 
         '& .MuiDrawer-paper': {
           width: mini ? 60 : width,
           boxSizing: 'border-box',
-          background: '#fff',
+          background: theme.palette.mode === 'dark' ? '#1e2026' : '#fff',
+          color: theme.palette.mode === 'dark' ? '#fff' : 'inherit',
           top: 64,
           height: 'calc(100% - 64px)',
           overflowX: 'hidden',
-          transition: 'width 0.2s',
+          transition: 'width 0.2s, background 0.2s',
         },
       }}
       {...drawerProps}
@@ -63,17 +66,24 @@ const SideNavBar = ({ width = 220, open = true, mini = false, isMobile = false, 
                 transition: 'background 0.2s',
                 justifyContent: mini ? 'center' : 'flex-start',
                 px: mini ? 0 : 2,
-                background: isActive ? '#e3e8ff' : 'transparent',
-                color: isActive ? '#1a237e' : 'inherit',
+                background: isActive
+                  ? theme.palette.mode === 'dark'
+                    ? '#19376D'
+                    : '#e3e8ff'
+                  : 'transparent',
+                color: isActive
+                  ? theme.palette.mode === 'dark'
+                    ? '#fff'
+                    : '#1a237e'
+                  : 'inherit',
                 '&:hover': {
-                  background: '#f4f5f7',
+                  background: theme.palette.mode === 'dark' ? '#233e7c' : '#f4f5f7',
                   color: '#1a237e',
                   cursor: 'pointer',
                 },
               }}
             >
-              {/* Icon first, then text */}
-              <ListItemIcon sx={{ minWidth: 0, mr: !mini ? 2 : 0, justifyContent: 'center' }}>
+              <ListItemIcon sx={{ minWidth: 0, mr: !mini ? 2 : 0, justifyContent: 'center', color: 'inherit' }}>
                 {item.icon}
               </ListItemIcon>
               {!mini && <ListItemText primary={item.text} />}
