@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import DriversTable from '../components/DriversTable';
 import DriverDetailsRequests from '../components/DriverDetailsCard';
+import { useTheme } from '@mui/material/styles';
 
 const Drivers = () => {
   const [search, setSearch] = useState('');
+  const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
 
   return (
     <div
       style={{
         display: 'flex',
-        gap: 0,
-        alignItems: 'flex-start', // Align tops
+        gap: 20,
+        alignItems: 'flex-start',
       }}
     >
       <div style={{ flex: 1, marginRight: 0 }}>
@@ -20,9 +23,9 @@ const Drivers = () => {
           alignItems: 'center',
           justifyContent: 'space-between',
           padding: '18px 0 0px 0',
-          marginTop: 0 // Remove any top margin
+          marginTop: 0
         }}>
-          <h4 className="m-0">Drivers</h4>
+          <h4 className="m-0" style={{ color: isDark ? '#fff' : '#222' }}>Drivers</h4>
           <div style={{ position: 'relative', width: 220 }}>
             <span
               style={{
@@ -30,7 +33,7 @@ const Drivers = () => {
                 left: 10,
                 top: '50%',
                 transform: 'translateY(-50%)',
-                color: '#888',
+                color: isDark ? '#bbb' : '#888',
                 pointerEvents: 'none',
                 zIndex: 2
               }}
@@ -49,7 +52,10 @@ const Drivers = () => {
                 fontSize: 14,
                 padding: '6px 8px 6px 32px',
                 borderRadius: 7,
-                border: '1px solid #ccc'
+                border: isDark ? '1px solid #3556a3' : '1px solid #ccc',
+                background: isDark ? 'rgba(11,36,71,0.7)' : '#fff',
+                color: isDark ? '#fff' : '#222',
+                transition: 'background 0.3s, color 0.3s, border 0.3s'
               }}
             />
           </div>

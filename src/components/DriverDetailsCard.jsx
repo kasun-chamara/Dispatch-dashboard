@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import driverDetails from '../mockdata/driverDetails';
+import { useTheme } from '@mui/material/styles';
 
-const DriverDetailsCard = ({ driver }) => {
+const DriverDetailsCard = ({ driver, isDark }) => {
   const [shiftInput, setShiftInput] = useState('');
   const [endInput, setEndInput] = useState('');
   const isActive = driver.active;
@@ -9,15 +10,22 @@ const DriverDetailsCard = ({ driver }) => {
   return (
     <div
       style={{
-        border: '1px solid #eee',
-        borderRadius: 7,
+        border: isDark ? '1px solid #233e7c' : '1px solid #eee',
+        borderRadius: 10,
         padding: 16,
         marginBottom: 14,
-        background: '#F8F4EB',
+        background: isDark ? 'rgba(11,36,71,0.7)' : '#F8F4EB',
         fontSize: 13,
         maxWidth: 320,
         width: '100%',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
+        color: isDark ? '#fff' : '#222',
+        boxShadow: isDark
+          ? '0 4px 32px 0 rgba(11,36,71,0.25)'
+          : '0 4px 32px 0 rgba(0,0,0,0.08)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        transition: 'background 0.3s, color 0.3s, border 0.3s'
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: 4 }}>
@@ -47,7 +55,7 @@ const DriverDetailsCard = ({ driver }) => {
       </div>
       <div
         style={{
-          borderTop: '1px dashed #bbb',
+          borderTop: isDark ? '1px dashed #3556a3' : '1px dashed #bbb',
           margin: '10px 0'
         }}
       ></div>
@@ -68,7 +76,7 @@ const DriverDetailsCard = ({ driver }) => {
       </div>
       <div
         style={{
-          borderTop: '1px dashed #bbb',
+          borderTop: isDark ? '1px dashed #3556a3' : '1px dashed #bbb',
           margin: '10px 0'
         }}
       ></div>
@@ -88,8 +96,10 @@ const DriverDetailsCard = ({ driver }) => {
             flex: 1,
             padding: '5px 8px',
             borderRadius: 4,
-            border: '1px solid #bbb',
+            border: isDark ? '1px solid #3556a3' : '1px solid #bbb',
             fontSize: 13,
+            background: isDark ? 'rgba(11,36,71,0.7)' : '#fff',
+            color: isDark ? '#fff' : '#222'
           }}
         />
         <button
@@ -119,8 +129,10 @@ const DriverDetailsCard = ({ driver }) => {
             flex: 1,
             padding: '5px 8px',
             borderRadius: 4,
-            border: '1px solid #bbb',
+            border: isDark ? '1px solid #3556a3' : '1px solid #bbb',
             fontSize: 13,
+            background: isDark ? 'rgba(11,36,71,0.7)' : '#fff',
+            color: isDark ? '#fff' : '#222'
           }}
         />
         <button
@@ -146,6 +158,8 @@ const DriverDetailsCard = ({ driver }) => {
 
 const DriverDetailsRequests = () => {
   const [search, setSearch] = useState('');
+  const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
 
   const filteredDrivers = driverDetails.filter(driver =>
     driver.name.toLowerCase().includes(search.toLowerCase())
@@ -157,18 +171,25 @@ const DriverDetailsRequests = () => {
         width: '100%',
         maxWidth: 320,
         minHeight: 575,
-        background: '#fff',
-        borderRadius: 5,
+        background: isDark ? 'rgba(11,36,71,0.55)' : '#fff',
+        borderRadius: 10,
         padding: 16,
         flex: '0 0 320px',
         display: 'flex',
         flexDirection: 'column',
         marginRight: 0,
-        marginTop: 0
+        marginTop: 0,
+        boxShadow: isDark
+          ? '0 4px 32px 0 rgba(11,36,71,0.25)'
+          : '0 4px 32px 0 rgba(0,0,0,0.08)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        border: isDark ? '1px solid rgba(255,255,255,0.18)' : '1px solid #eee',
+        transition: 'background 0.3s, color 0.3s, border 0.3s'
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: 10, marginTop: 0 }}>
-        <h6 className="mb-0" style={{ flex: 1 }}>Driver Details</h6>
+        <h6 className="mb-0" style={{ flex: 1, color: isDark ? '#fff' : '#222' }}>Driver Details</h6>
         <div style={{ position: 'relative', width: 150 }}>
           <span
             style={{
@@ -176,7 +197,7 @@ const DriverDetailsRequests = () => {
               left: 8,
               top: '50%',
               transform: 'translateY(-50%)',
-              color: '#888',
+              color: isDark ? '#bbb' : '#888',
               pointerEvents: 'none',
               zIndex: 2
             }}
@@ -195,17 +216,20 @@ const DriverDetailsRequests = () => {
               fontSize: 14,
               padding: '6px 8px 6px 32px',
               borderRadius: 7,
-              border: '1px solid #ccc'
+              border: isDark ? '1px solid #3556a3' : '1px solid #ccc',
+              background: isDark ? 'rgba(11,36,71,0.7)' : '#fff',
+              color: isDark ? '#fff' : '#222',
+              transition: 'background 0.3s, color 0.3s, border 0.3s'
             }}
           />
         </div>
       </div>
       <div style={{ flex: 1, overflowY: 'auto', overflowX: 'hidden' }}>
         {filteredDrivers.map((driver, idx) => (
-          <DriverDetailsCard key={idx} driver={driver} />
+          <DriverDetailsCard key={idx} driver={driver} isDark={isDark} />
         ))}
         {filteredDrivers.length === 0 && (
-          <div style={{ color: '#888', textAlign: 'center', marginTop: 32 }}>
+          <div style={{ color: isDark ? '#bbb' : '#888', textAlign: 'center', marginTop: 32 }}>
             No drivers found.
           </div>
         )}
